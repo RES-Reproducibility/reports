@@ -3,8 +3,8 @@ title: "EJ Data Editor Report {{< var vintage >}}"
 author: 
   - name: Florian Oswald
     orcid: 0000-0001-7737-2038
-    email: florian.oswald@sciencespo.fr
-    affiliations: SciencesPo Paris, RES Data Editor
+    email: florian.oswald@unito.it
+    affiliations: Collegio Carlo Alberto, Uni Turin, RES Data Editor
 date: today
 date-format: "D MMMM, YYYY"
 subtitle: "RES Reproducibility Operations"
@@ -27,16 +27,20 @@ title-slide-attributes:
 
 ## Agenda
 
-1.  Report on Downloads of our packages
+1.  Successful Search for Successor
+2.  Outreach and Training Events
 2.  Performance Report
-3.  Difficult Packages
 
-## Consumption of our Packages
+## New Data Editor
 
-How often are our packages downloaded from `zenodo.org` vs how many citations on google scholar?
+* Starting July 1st Damian Clarke will take over as RES Data Editor. I am leaving to implement the Data Editor role at the JPE.
+* Fabien Postel-Vinay, Brooke Sperry, Jaap Abbring, Francesco Lippi and myself were on the search committee.
+* I'm planning to start hand over asap.
 
-![](./images/downloads.png)
+## Outreach and Training Events
 
+* Pre-conference reproducibility workshop at Irish Economic Association at Belfast U
+* Reproducibility workshop at Collegio Carlo Alberto + local Unis
 
 # EJ Data Editor Report {background-color="#40666e"}
 
@@ -49,7 +53,8 @@ How often are our packages downloaded from `zenodo.org` vs how many citations on
 #| message: false
 #| warning: false
 library(RESr)
-x = read_list()
+x = read_ej()
+cl = RESr:::clean_list(x)
 ```
 
 ::: {.column width="74%"}
@@ -60,7 +65,7 @@ x = read_list()
 <br>
 
 -   Stayed below 15 day mark.
--   Right direction 📉.
+-   Trying to get resubmission times down.
 -   Graph shows cumulative times.
 :::
 
@@ -107,45 +112,26 @@ x = read_list()
 👉 Waiting for author replies:
 
 ```julia
- Row │ days_waiting  case_id                 round    ms        editor  
-─────┼──────────────────────────────────────────────────────────────────
-   1 │ 0 days        Desmet-20230792-R2      2        20230792  SB
-   2 │ 1 day         Hergueux-20221033-R3    3        20221033  SH
-   3 │ 1 day         Mysliwski-20201004-R3   3        20201004  HB
-   4 │ 1 day         Nieto-20200125-R2       2        20200125  MM
-   5 │ 7 days        Bogart-20231173-R3      3        20231173  SB
-   6 │ 9 days        Tungodden-20221320-R2   2        20221320  SH
-   7 │ 14 days       Milner-20221030-R4      4        20221030  EK
-   8 │ 15 days       Weinstein-20230047-R2   2        20230047  BP
-   9 │ 19 days       Auffhammer-20220399-R5  5        20220399  SH
-  10 │ 20 days       Panza-20230892-R5       5        20230892  SB
-  11 │ 27 days       Jia-20221220-R2         2        20221220  MM
-  12 │ 29 days       Erixson-20220836-R3     3        20220836  SH
-  13 │ 37 days       Knittel-20210889-R5     5        20210889  SA
-  14 │ 77 days       Tabellini-20230277-R3   3        20230277  EZ
-  ```
-
-## Difficult Packages
-
-👉 Papers with 2 or more iterations
-
-```julia
- Row │ ms        round  firstname         lastname    editor 
-─────┼───────────────────────────────────────────────────────
-   1 │ 20201004      3  Mateusz           Mysliwski   HB
-   2 │ 20201673      3  Tim               Obermeier   BP
-   3 │ 20201684      5  Olivier           Bargain     EZ
-   4 │ 20210374      4  Tiago             Cavalcanti  FL
-   5 │ 20210889      5  Christopher       Knittel     SA
-   6 │ 20220290      3  Lionel            Page        SH
-   7 │ 20220399      5  Maximilian        Auffhammer  SH
-   8 │ 20220836      3  Oscar             Erixson     SH
-   9 │ 20221030      4  Benjamin          Milner      EK
-  10 │ 20221033      3  Jerome            Hergueux    SH
-  11 │ 20230277      3  Marco             Tabellini   EZ
-  12 │ 20230481      4  Pierre-Guillaume  Meon        EZ
-  13 │ 20230892      5  Laura             Panza       SB
-  14 │ 20231173      3  Dan               Bogart      SB
+ Row │ days_waiting  case_id                  round    editor  
+─────┼─────────────────────────────────────────────────────────
+   1 │ 0 days        Katovich-20230276-R5     5        EK
+   2 │ 4 days        Rotunno-20210861-R3      3        MM
+   3 │ 4 days        Milner-20221030-R7       7        EK
+   4 │ 4 days        Archsmith-20230968-R3    3        SH
+   5 │ 8 days        Ramey-20231019-R3        3        FP
+   6 │ 9 days        Oosterlinck-20240695-R3  3        SB
+   7 │ 9 days        Agranov-20230526-R3      3        SH
+   8 │ 37 days       Barrage-20191485-R2      2        EC
+   9 │ 47 days       Lucas-20230707-R2        2        SA
+  10 │ 70 days       Bargain-20201684-R6      6        EZ
+  11 │ 147 days      Nix-20231116-R2          2        BP
+  12 │ missing       Li-20230290-R1           1        HBI
+  13 │ missing       Gonzalez-20220342-R1     1        SA
+  14 │ missing       Davis-20231015-R1        1        SA
+  15 │ missing       Cornelson-20240847-R1    1        SB
+  16 │ missing       Adhvaryu-20230588-R1     1        SA
+  17 │ missing       Markiewicz-20230331-R1   1        FP
+  18 │ missing       Schmick-20240045-R1      1        SB
   ```
 
 ## Hours Spent per Iteration
@@ -170,7 +156,7 @@ Breakdown of hours worked and cost for EJ:
 ```{r}
 
 
-kableExtra::kable(RESr:::billing_table_ej()[,1:5],digits = 1)
+kableExtra::kable(RESr:::billing_table_ej()[Quarter > "2023 Q4" & Quarter < "2025 Q2",1:5],digits = 1)
 ```
 
 ------------------------------------------------------------------------
@@ -179,7 +165,7 @@ kableExtra::kable(RESr:::billing_table_ej()[,1:5],digits = 1)
 
 ::: {style="font-size: 80%;"}
 ```{r}
-kableExtra::kable(RESr:::list_software( )$table)
+kableExtra::kable(RESr:::list_software(cl)$table)
 ```
 :::
 
@@ -203,4 +189,4 @@ kableExtra::kable(RESr:::list_software( )$table)
 
 # End
 
-Thanks for listening and: onwards! 💪🏽
+It was a pleasure to collaborate and learn from you. Hope to see you around. Thank you!
